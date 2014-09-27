@@ -13,4 +13,13 @@ CHIP Mux {
 
     PARTS:
     // Put your code here:
+    // boolean equaltion equals (a * notsel) + (b * sel)
+    // first get not sel
+    Not(in=sel, out=notsel);
+    // then get a and notsel
+    And(a=a, b=notsel, out=aandnotsel);
+    // get b and sek
+    And(a=b, b=sel, out=bandsel);
+    // now get aandnotsel or bandsel
+    Or(a=aandnotsel, b=bandsel, out=out);
 }
