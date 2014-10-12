@@ -61,11 +61,12 @@ CHIP ALU {
    Mux16(a=zyOut, b=noty, sel=ny, out=nyOut);
 
    // x + y OR x and y 
-   Add16(a=nxOut, b=nyOut, out=addOut);
 
    And16(a=nxOut, b=nyOut, out=andOut);
 
-   Mux16(a=addOut, b=andOut, sel=f, out=fOut);
+   Add16(a=nxOut, b=nyOut, out=addOut);
+
+   Mux16(a=andOut, b=addOut, sel=f, out=fOut);
 
    // negate the output?
    Not16(in=fOut, out=noOut);
